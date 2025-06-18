@@ -47,16 +47,56 @@ const Home = () => {
       </section>
       {/* What's on your mind Section */}
       <section className="py-12 md:py-16 bg-white px-4 sm:px-6">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-6 sm:mb-8">What's on your mind?</h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-12">
-            {categories.slice(1, 4).map((category) => (
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-8 sm:mb-12 text-center">
+            What's on your mind?
+          </h2>
+
+          {/* First Row - Featured Categories */}
+          <div className="hidden md:flex justify-center gap-6 mb-8">
+            {categories.slice(0, 4).map((category) => (
               <Link
                 key={category.id}
                 to={`/menu?category=${category.id}`}
-                className="group bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center hover:shadow-lg transition-all duration-300 border border-gray-200 hover:border-red-300"
+                className="group bg-white rounded-2xl p-6 text-center hover:shadow-xl transition-all duration-300 border-2 border-gray-100 hover:border-red-200 w-48"
               >
-                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-red-50 rounded-xl sm:rounded-2xl flex items-center justify-center mx-auto mb-2 sm:mb-3 group-hover:bg-red-100 transition-colors">
+                <div className="w-20 h-20 bg-red-50 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-red-100 transition-colors">
+                  <span className="text-3xl text-red-700">{category.icon}</span>
+                </div>
+                <h3 className="font-semibold text-gray-800 text-sm group-hover:text-red-700 transition-colors">
+                  {category.name}
+                </h3>
+              </Link>
+            ))}
+          </div>
+
+          {/* Second Row - Remaining Categories */}
+          <div className="hidden md:flex justify-center gap-6">
+            {categories.slice(4).map((category) => (
+              <Link
+                key={category.id}
+                to={`/menu?category=${category.id}`}
+                className="group bg-white rounded-2xl p-6 text-center hover:shadow-xl transition-all duration-300 border-2 border-gray-100 hover:border-red-200 w-48"
+              >
+                <div className="w-20 h-20 bg-red-50 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-red-100 transition-colors">
+                  <span className="text-3xl text-red-700">{category.icon}</span>
+                </div>
+                <h3 className="font-semibold text-gray-800 text-sm group-hover:text-red-700 transition-colors">
+                  {category.name}
+                </h3>
+              </Link>
+            ))}
+          </div>
+
+          {/* Mobile Grid (shown on smaller screens) */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 md:hidden">
+            {categories.map((category) => (
+              <Link
+                key={category.id}
+                to={`/menu?category=${category.id}`}
+                className="group bg-white rounded-xl p-4 text-center hover:shadow-lg transition-all duration-300 border border-gray-200 hover:border-red-300"
+              >
+                <div className="w-12 h-12 sm:w-14 sm:h-14 bg-red-50 rounded-xl flex items-center justify-center mx-auto mb-2 group-hover:bg-red-100 transition-colors">
                   <span className="text-xl sm:text-2xl text-red-700">{category.icon}</span>
                 </div>
                 <h3 className="font-medium text-gray-800 text-xs sm:text-sm group-hover:text-red-700 transition-colors">
@@ -67,7 +107,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
       {/* Features Section */}
       <section className="py-12 md:py-20 bg-gray-50 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
