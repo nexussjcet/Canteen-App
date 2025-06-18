@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { menuData as initialData, categories } from '../data/menuData';
 import { Pencil, Trash, Plus, X, Star } from 'lucide-react';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
 interface MenuItem {
@@ -21,6 +21,7 @@ const AdminDashboard = () => {
   const [editingItem, setEditingItem] = useState<MenuItem | null>(null);
   const [isFormOpen, setIsFormOpen] = useState(false);
   const { user, logout } = useAuth();
+  const navigate = useNavigate();
 
   if (!user || user.role !== 'admin') {
     return <Navigate to="/login" />;
@@ -91,6 +92,11 @@ const AdminDashboard = () => {
     }
   };
 
+  const handleLogout = () => {
+    logout();
+    navigate('/');
+  };
+
   return (
     <div className="min-h-screen bg-gray-50 p-4 md:p-8">
       <div className="max-w-6xl mx-auto">
@@ -107,7 +113,7 @@ const AdminDashboard = () => {
               <Plus size={18} /> Add Item
             </button>
             <button
-              onClick={logout}
+              onClick={handleLogout}
               className="bg-red-600 hover:bg-red-700 text-white font-medium px-4 py-2 rounded"
             >
               Logout

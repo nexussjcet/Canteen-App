@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { Star, Heart } from 'lucide-react';
+import { Star } from 'lucide-react';
 import { menuData, categories } from '../data/menuData';
 import { useCart } from '../context/CartContext';
 
@@ -78,9 +78,6 @@ const Menu = () => {
                   <div className="flex-1 flex flex-col">
                     <div className="flex justify-between items-start mb-2">
                       <h3 className="font-semibold text-gray-800 text-lg mb-1">{item.name}</h3>
-                      <button className="ml-2 p-1 rounded-full hover:bg-gray-100 transition-colors">
-                        <Heart className="w-5 h-5 text-gray-400 hover:text-red-500" />
-                      </button>
                     </div>
                     
                     <div className="flex items-center space-x-3 mb-3">

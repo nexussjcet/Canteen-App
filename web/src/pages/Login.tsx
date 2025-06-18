@@ -107,6 +107,16 @@ const Login = () => {
               {isLoading ? 'Signing In...' : 'Sign In'}
             </button>
           </form>
+
+          {/* Add this section for the signup link */}
+          <div className="text-center mt-8">
+            <p className="text-gray-600">
+              Don't have an account?{' '}
+              <Link to="/signup" className="text-red-700 hover:text-red-800 font-semibold transition-colors">
+                Sign Up
+              </Link>
+            </p>
+          </div>
         </div>
       </div>
     </div>

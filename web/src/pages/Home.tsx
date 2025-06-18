@@ -45,7 +45,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
       {/* What's on your mind Section */}
       <section className="py-12 md:py-16 bg-white px-4 sm:px-6">
         <div className="max-w-4xl mx-auto">
@@ -55,50 +54,15 @@ const Home = () => {
               <Link
                 key={category.id}
                 to={`/menu?category=${category.id}`}
-                className="group bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center hover:shadow-lg transition-all duration-300"
+                className="group bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center hover:shadow-lg transition-all duration-300 border border-gray-200 hover:border-red-300"
               >
-                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gray-100 rounded-xl sm:rounded-2xl flex items-center justify-center mx-auto mb-2 sm:mb-3 group-hover:bg-red-50 transition-colors">
-                  <span className="text-xl sm:text-2xl">{category.icon}</span>
+                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-red-50 rounded-xl sm:rounded-2xl flex items-center justify-center mx-auto mb-2 sm:mb-3 group-hover:bg-red-100 transition-colors">
+                  <span className="text-xl sm:text-2xl text-red-700">{category.icon}</span>
                 </div>
-                <h3 className="font-medium text-gray-800 text-xs sm:text-sm">{category.name}</h3>
+                <h3 className="font-medium text-gray-800 text-xs sm:text-sm group-hover:text-red-700 transition-colors">
+                  {category.name}
+                </h3>
               </Link>
-            ))}
-          </div>
-
-          {/* Featured Items */}
-          <div className="space-y-3 sm:space-y-4">
-            {featuredItems.slice(0, 3).map((item) => (
-              <div
-                key={item.id}
-                className="bg-white rounded-xl sm:rounded-2xl p-3 sm:p-4 shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300"
-              >
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-3 sm:space-x-4">
-                    <img
-                      src={item.image}
-                      alt={item.name}
-                      className="w-12 h-12 sm:w-16 sm:h-16 object-cover rounded-lg sm:rounded-xl"
-                    />
-                    <div>
-                      <h3 className="font-semibold text-gray-800 text-sm sm:text-base mb-1">{item.name}</h3>
-                      <p className="text-red-700 font-bold text-sm sm:text-base">₹{item.price}</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center space-x-2 sm:space-x-3">
-                    <button className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-gray-300 flex items-center justify-center hover:bg-red-50 transition-colors">
-                      <svg className="w-3 h-3 sm:w-4 sm:h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                      </svg>
-                    </button>
-                    <button 
-                      onClick={() => handleAddToCart(item)}
-                      className="bg-red-700 hover:bg-red-800 text-white px-4 py-1 sm:px-6 sm:py-2 rounded-md sm:rounded-lg font-medium text-sm sm:text-base transition-colors"
-                    >
-                      Add
-                    </button>
-                  </div>
-                </div>
-              </div>
             ))}
           </div>
         </div>

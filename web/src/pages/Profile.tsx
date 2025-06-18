@@ -227,13 +227,6 @@ const Profile = () => {
                 </div>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-3">
-                    <Heart className="w-5 h-5 text-red-700" />
-                    <span className="text-gray-600">Favorites</span>
-                  </div>
-                  <span className="font-bold text-gray-800">12</span>
-                </div>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-3">
                     <span className="w-5 h-5 text-red-700 font-bold">₹</span>
                     <span className="text-gray-600">Total Spent</span>
                   </div>
