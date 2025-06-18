@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap');
+
+.font-outfit {
+  font-family: 'Outfit', sans-serif;
+}
+
+.shadow-nav {
+  box-shadow: 0px 4px 9px rgba(0, 0, 0, 0.08);
+}
+.shadow-effect {
+    filter: drop-shadow(-51px 0px 93.7px rgba(0, 0, 0, 0.85));
+  }

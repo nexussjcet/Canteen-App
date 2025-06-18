@@ -1,142 +1,197 @@
+
+
 export interface MenuItem {
   id: string;
   name: string;
   price: number;
   image: string;
-  category: 'veg' | 'non-veg' | 'snacks' | 'beverages';
+  category: string;
   description: string;
-  rating: number;
   isVeg: boolean;
+  rating: number;
+  prepTime: string;
 }
+
+export interface Category {
+  id: string;
+  name: string;
+  icon: string;
+}
+
+export const categories: Category[] = [
+  { id: 'all', name: 'All', icon: '🍽️' },
+  { id: 'veg', name: 'Veg', icon: '🥬' },
+  { id: 'non-veg', name: 'Non Veg', icon: '🍖' },
+  { id: 'snacks', name: 'Snacks', icon: '🍿' },
+  { id: 'beverages', name: 'Beverages', icon: '🥤' },
+  { id: 'desserts', name: 'Desserts', icon: '🍰' },
+];
 
 export const menuData: MenuItem[] = [
   // Veg Items
   {
     id: '1',
     name: 'Chicken Biryani',
-    price: 280,
-    image: 'https://images.unsplash.com/photo-1589302168068-964664d93dc0?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    price: 180,
+    image: 'https://images.pexels.com/photos/1624487/pexels-photo-1624487.jpeg',
     category: 'non-veg',
-    description: 'Aromatic basmati rice with tender chicken pieces and authentic spices',
-    rating: 4.8,
+    description: 'Aromatic basmati rice cooked with tender chicken pieces and traditional spices',
     isVeg: false,
+    rating: 4.5,
+    prepTime: '25 mins'
   },
   {
     id: '2',
     name: 'Paneer Butter Masala',
-    price: 220,
-    image: 'https://images.pexels.com/photos/2474661/pexels-photo-2474661.jpeg?auto=compress&cs=tinysrgb&w=500',
+    price: 140,
+    image: 'https://images.pexels.com/photos/2474661/pexels-photo-2474661.jpeg',
     category: 'veg',
-    description: 'Rich and creamy paneer curry with butter and aromatic spices',
-    rating: 4.6,
+    description: 'Creamy tomato-based curry with soft paneer cubes',
     isVeg: true,
+    rating: 4.3,
+    prepTime: '15 mins'
   },
   {
     id: '3',
-    name: 'Mutton Curry',
-    price: 320,
-    image: 'https://images.pexels.com/photos/7625056/pexels-photo-7625056.jpeg?auto=compress&cs=tinysrgb&w=500',
-    category: 'non-veg',
-    description: 'Slow-cooked tender mutton in rich gravy with traditional spices',
-    rating: 4.7,
-    isVeg: false,
+    name: 'Masala Dosa',
+    price: 80,
+    image: 'https://images.pexels.com/photos/5560763/pexels-photo-5560763.jpeg',
+    category: 'veg',
+    description: 'Crispy rice crepe filled with spiced potato mixture',
+    isVeg: true,
+    rating: 4.4,
+    prepTime: '12 mins'
   },
   {
     id: '4',
-    name: 'Vegetable Fried Rice',
-    price: 180,
-    image: 'https://images.unsplash.com/photo-1664717698774-84f62382613b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    category: 'veg',
-    description: 'Stir-fried rice with fresh vegetables and aromatic sauces',
-    rating: 4.4,
-    isVeg: true,
+    name: 'Chicken Curry',
+    price: 160,
+    image: 'https://images.pexels.com/photos/2474658/pexels-photo-2474658.jpeg',
+    category: 'non-veg',
+    description: 'Traditional chicken curry with aromatic spices',
+    isVeg: false,
+    rating: 4.2,
+    prepTime: '20 mins'
   },
   {
     id: '5',
-    name: 'Chicken Tandoori',
-    price: 300,
-    image: 'https://images.unsplash.com/photo-1610057099431-d73a1c9d2f2f?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    category: 'non-veg',
-    description: 'Marinated chicken grilled to perfection in tandoor',
-    rating: 4.9,
-    isVeg: false,
+    name: 'Veg Fried Rice',
+    price: 120,
+    image: 'https://images.pexels.com/photos/1624487/pexels-photo-1624487.jpeg',
+    category: 'veg',
+    description: 'Stir-fried rice with mixed vegetables and soy sauce',
+    isVeg: true,
+    rating: 4.1,
+    prepTime: '10 mins'
   },
   {
     id: '6',
-    name: 'Dal Curry',
-    price: 150,
-    image: 'https://images.unsplash.com/photo-1741026079032-7cb660e44bad?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    category: 'veg',
-    description: 'Yellow lentils tempered with cumin, garlic, and spices',
-    rating: 4.3,
+    name: 'Samosa',
+    price: 25,
+    image: 'https://images.pexels.com/photos/14477/pexels-photo-14477.jpeg',
+    category: 'snacks',
+    description: 'Crispy triangular pastry filled with spiced potatoes',
     isVeg: true,
+    rating: 4.0,
+    prepTime: '5 mins'
   },
   {
     id: '7',
-    name: 'Samosa',
-    price: 40,
-    image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    category: 'snacks',
-    description: 'Crispy triangular pastry filled with spiced potatoes',
-    rating: 4.5,
+    name: 'Masala Chai',
+    price: 15,
+    image: 'https://images.pexels.com/photos/1638280/pexels-photo-1638280.jpeg',
+    category: 'beverages',
+    description: 'Traditional Indian spiced tea with milk',
     isVeg: true,
+    rating: 4.6,
+    prepTime: '3 mins'
   },
   {
     id: '8',
-    name: 'Pakoda',
-    price: 60,
-    image: 'https://images.unsplash.com/photo-1631788012420-a0d6a3cfcdfb?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cGFrb2RhfGVufDB8fDB8fHww',
-    category: 'snacks',
-    description: 'Deep-fried fritters with vegetables and gram flour batter',
-    rating: 4.2,
+    name: 'Gulab Jamun',
+    price: 40,
+    image: 'https://images.pexels.com/photos/1099680/pexels-photo-1099680.jpeg',
+    category: 'desserts',
+    description: 'Sweet milk dumplings in sugar syrup',
     isVeg: true,
+    rating: 4.4,
+    prepTime: '2 mins'
   },
   {
     id: '9',
-    name: 'Chai',
-    price: 25,
-    image: 'https://images.unsplash.com/photo-1625033405953-f20401c7d848?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bWFzYWxhJTIwY2hhaXxlbnwwfHwwfHx8MA%3D%3D',
-    category: 'beverages',
-    description: 'Traditional Indian tea with milk and aromatic spices',
-    rating: 4.6,
-    isVeg: true,
+    name: 'Mutton Biryani',
+    price: 220,
+    image: 'https://images.pexels.com/photos/1624487/pexels-photo-1624487.jpeg',
+    category: 'non-veg',
+    description: 'Fragrant basmati rice with tender mutton pieces',
+    isVeg: false,
+    rating: 4.7,
+    prepTime: '30 mins'
   },
   {
     id: '10',
-    name: 'Fresh Lime Water',
-    price: 35,
-    image: 'https://images.unsplash.com/photo-1556881286-fc6915169721?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZnJlc2glMjBsaW1lfGVufDB8fDB8fHww',
-    category: 'beverages',
-    description: 'Refreshing lime water with mint and rock salt',
-    rating: 4.4,
+    name: 'Dal Tadka',
+    price: 90,
+    image: 'https://images.pexels.com/photos/5560763/pexels-photo-5560763.jpeg',
+    category: 'veg',
+    description: 'Yellow lentils tempered with cumin and spices',
     isVeg: true,
+    rating: 4.2,
+    prepTime: '15 mins'
   },
   {
     id: '11',
-    name: 'soda lime',
-    price: 45,
-    image: 'https://plus.unsplash.com/premium_photo-1676300547289-c87ea9c84569?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bGFzc2klMjBkcmlua3xlbnwwfHwwfHx8MA%3D%3D',
-    category: 'beverages',
-    description: 'Creamy yogurt-based drink with sugar and cardamom',
+    name: 'Chicken Tikka',
+    price: 180,
+    image: 'https://images.pexels.com/photos/2474658/pexels-photo-2474658.jpeg',
+    category: 'non-veg',
+    description: 'Grilled chicken marinated in yogurt and spices',
+    isVeg: false,
     rating: 4.5,
-    isVeg: true,
+    prepTime: '18 mins'
   },
   {
     id: '12',
-    name: 'Chicken Curry',
-    price: 250,
-    image: 'https://media.istockphoto.com/id/1280147779/photo/chicken-curry-iftari.webp?a=1&b=1&s=612x612&w=0&k=20&c=P8wwOPDckLTrpuhxhyXNjxXj9PNB1TD3oLMVfzSqAuk=',
-    category: 'non-veg',
-    description: 'Tender chicken cooked in rich onion-tomato gravy',
-    rating: 4.6,
-    isVeg: false,
+    name: 'Pav Bhaji',
+    price: 70,
+    image: 'https://images.pexels.com/photos/5560763/pexels-photo-5560763.jpeg',
+    category: 'snacks',
+    description: 'Spiced vegetable curry served with buttered bread',
+    isVeg: true,
+    rating: 4.3,
+    prepTime: '12 mins'
   },
-];
-
-export const categories = [
-  { id: 'all', name: 'All Items', icon: '🍽️' },
-  { id: 'veg', name: 'Veg', icon: '🥗' },
-  { id: 'non-veg', name: 'Non Veg', icon: '🍗' },
-  { id: 'snacks', name: 'Snacks', icon: '🍟' },
-  { id: 'beverages', name: 'Beverages', icon: '🥤' },
+  {
+    id: '13',
+    name: 'Fresh Lime Soda',
+    price: 30,
+    image: 'https://images.pexels.com/photos/1638280/pexels-photo-1638280.jpeg',
+    category: 'beverages',
+    description: 'Refreshing lime juice with soda water',
+    isVeg: true,
+    rating: 4.1,
+    prepTime: '2 mins'
+  },
+  {
+    id: '14',
+    name: 'Ras Malai',
+    price: 60,
+    image: 'https://images.pexels.com/photos/1099680/pexels-photo-1099680.jpeg',
+    category: 'desserts',
+    description: 'Soft cottage cheese dumplings in sweet milk',
+    isVeg: true,
+    rating: 4.5,
+    prepTime: '3 mins'
+  },
+  {
+    id: '15',
+    name: 'Fish Curry',
+    price: 170,
+    image: 'https://images.pexels.com/photos/2474658/pexels-photo-2474658.jpeg',
+    category: 'non-veg',
+    description: 'Fresh fish cooked in coconut-based curry',
+    isVeg: false,
+    rating: 4.3,
+    prepTime: '22 mins'
+  }
 ];
