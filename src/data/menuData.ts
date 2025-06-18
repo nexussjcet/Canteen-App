@@ -66,7 +66,7 @@ export const menuData: MenuItem[] = [
     id: '4',
     name: 'Chicken Curry',
     price: 160,
-    image: 'https://images.pexels.com/photos/2474658/pexels-photo-2474658.jpeg',
+    image: 'https://as1.ftcdn.net/v2/jpg/01/64/41/20/1000_F_164412070_kZoPXrGd6AXwbLhXEIQulcbeU5xU6hdh.jpg',
     category: 'non-veg',
     description: 'Traditional chicken curry with aromatic spices',
     isVeg: false,
