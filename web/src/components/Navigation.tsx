@@ -4,7 +4,6 @@ import { Home, Utensils, User, Phone, ShoppingCart, Menu, X } from 'lucide-react
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
 
-
 const Navigation = () => {
   const location = useLocation();
   const { getTotalItems } = useCart();
@@ -41,6 +40,7 @@ const Navigation = () => {
                 {label}
               </Link>
             ))}
+            {/* Desktop-only Cart */}
             <Link
               to="/cart"
               className="flex items-center text-white text-[20px] font-medium capitalize hover:text-red-300 transition-colors duration-300 relative"
@@ -80,19 +80,7 @@ const Navigation = () => {
                   {label}
                 </Link>
               ))}
-              <Link
-                to="/cart"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="flex items-center justify-center text-white text-2xl font-medium hover:text-red-300 transition-colors relative"
-              >
-                <ShoppingCart className="mr-3" size={24} />
-                Cart
-                {getTotalItems() > 0 && (
-                  <span className="absolute -top-2 -right-2 bg-red-600 text-white text-sm rounded-full w-6 h-6 flex items-center justify-center">
-                    {getTotalItems()}
-                  </span>
-                )}
-              </Link>
+              {/* Removed cart from mobile menu since it will be in bottom nav */}
             </div>
           </div>
         )}
@@ -103,14 +91,27 @@ const Navigation = () => {
   // Mobile-first navigation for other pages
   return (
     <>
-      {/* Mobile Navigation Header */}
-      <nav className="fixed w-full top-0 bg-gradient-to-r from-red-900 to-red-800 shadow-lg z-50">
-        <div className="px-4">
+      {/* Desktop Navigation Header for other pages */}
+      <div className="hidden lg:block fixed w-full top-0 bg-gradient-to-r from-red-900 to-red-800 shadow-lg z-50">
+        <div className="max-w-7xl mx-auto px-6">
           <div className="flex justify-between items-center h-16">
             <Link to="/" className="text-white text-xl font-bold">
               Canteen
             </Link>
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-8">
+              {navItems.map(({ path, label, icon: Icon }) => (
+                <Link
+                  key={path}
+                  to={path}
+                  className={`flex items-center text-white text-lg font-medium hover:text-red-300 transition-colors ${
+                    location.pathname === path ? 'text-red-300' : ''
+                  }`}
+                >
+                  <Icon className="mr-2" size={18} />
+                  {label}
+                </Link>
+              ))}
+              {/* Desktop-only Cart */}
               <Link
                 to="/cart"
                 className="relative text-white hover:text-red-300 transition-colors"
@@ -122,6 +123,20 @@ const Navigation = () => {
                   </span>
                 )}
               </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Navigation Header for other pages */}
+      <nav className="lg:hidden fixed w-full top-0 bg-gradient-to-r from-red-900 to-red-800 shadow-lg z-50">
+        <div className="px-4">
+          <div className="flex justify-between items-center h-16">
+            <Link to="/" className="text-white text-xl font-bold">
+              Canteen
+            </Link>
+            <div className="flex items-center space-x-4">
+              {/* Removed cart from mobile header since it will be in bottom nav */}
               <button
                 onClick={toggleMobileMenu}
                 className="text-white p-2 hover:text-red-300 transition-colors"
@@ -133,7 +148,7 @@ const Navigation = () => {
         </div>
 
         {isMobileMenuOpen && (
-          <div className="bg-red-900/98 backdrop-blur-sm border-t border-red-800">
+          <div className="lg:hidden bg-red-900/98 backdrop-blur-sm border-t border-red-800">
             <div className="px-4 py-4 space-y-4">
               {navItems.map(({ path, label, icon: Icon }) => (
                 <Link
