@@ -20,6 +20,18 @@ def signup_route(req: SignupRequest):
     return {
         "status": "success"
     }
+
+class SigninRequest(BaseModel):
+    email: str
+    password: str
+
+@app.post("/signin")
+def signin_route(req: SigninRequest):
+    user = users.sign_in(req.email, req.password)
+    if user:
+        return {"status": "success", "user": user}
+    else:
+        return {"status": "error", "message": "Invalid credentials"}
     
 class MenuItem(BaseModel):
     name: str
