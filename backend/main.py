@@ -65,3 +65,4 @@ def update_menu_item_route(item_id: int, item: MenuItem):
 @app.delete("/menu/{item_id}")
 def delete_menu_item_route(item_id: int):
     return menu.delete_menu_item(item_id)
+
