@@ -1,6 +1,6 @@
-from fastapi import FastAPI
+from fastapi import FastAPI , Body , HTTPException
 from pydantic import BaseModel
-from models import users , menu
+from models import users , menu , cart , order
 
 app = FastAPI()
 
@@ -12,14 +12,13 @@ class SignupRequest(BaseModel):
     name: str
     phone: str
     password: str
-    email: str
 
 @app.post("/signup")
 def signup_route(req: SignupRequest):
     users.sign_up(req.email, req.name, req.phone, req.password)
     return {
         "status": "success"
-    }
+    }  
 
 class SigninRequest(BaseModel):
     email: str
@@ -33,6 +32,7 @@ def signin_route(req: SigninRequest):
     else:
         return {"status": "error", "message": "Invalid credentials"}
     
+# --- Menu Routes ---
 class MenuItem(BaseModel):
     name: str
     price: float
@@ -66,3 +66,37 @@ def update_menu_item_route(item_id: int, item: MenuItem):
 def delete_menu_item_route(item_id: int):
     return menu.delete_menu_item(item_id)
 
+
+@app.get("/menu/category/{category}")
+def get_menu_by_category(category: str):
+    items = menu.get_menu_items_by_category(category)
+    return items
+
+# --- Cart Routes ---
+class CartRequest(BaseModel):
+    item_id:int
+    quantity:int
+    
+@app.get("/cart/{user_id}")
+def get_cart_route(user_id:int):
+    return cart.get_cart(user_id)
+
+@app.post("/cart/{user_id}")
+def add_to_cart_route(user_id:int, req: CartRequest):
+    return cart.add_to_cart(user_id, req.item_id, req.quantity)
+
+@app.post("/cart/{user_id}/item/{item_id}/increment")
+def increment_cart_item_route(user_id: int, item_id: int):
+    return cart.increment_cart_item(user_id, item_id)
+
+@app.post("/cart/{user_id}/item/{item_id}/decrement")
+def decrement_cart_item_route(user_id: int, item_id: int):
+    return cart.decrement_cart_item(user_id, item_id)
+
+@app.delete("/cart/{user_id}/item/{item_id}")
+def remove_cart_item_route(user_id: int , item_id: int):
+    return cart.remove_cart_item(user_id, item_id)
+
+@app.delete("/cart/{user_id}")
+def clear_cart_route(user_id: int):
+    return cart.clear_cart(user_id)

@@ -18,4 +18,9 @@ def update_menu_item(item_id: int, data: dict):
 
 def delete_menu_item(item_id: int):
     response = supabase_client.table("menu").delete().eq("id", item_id).execute()
+    return response.data 
+
+def get_menu_items_by_category(category: str):
+    response = supabase_client.table("menu").select("*").eq("category", category).execute()
     return response.data
+
