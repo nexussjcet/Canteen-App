@@ -66,6 +66,7 @@ def update_menu_item_route(item_id: int, item: MenuItem):
 def delete_menu_item_route(item_id: int):
     return menu.delete_menu_item(item_id)
 
+
 @app.get("/menu/category/{category}")
 def get_menu_by_category(category: str):
     items = menu.get_menu_items_by_category(category)
