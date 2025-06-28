@@ -100,3 +100,17 @@ def remove_cart_item_route(user_id: int , item_id: int):
 @app.delete("/cart/{user_id}")
 def clear_cart_route(user_id: int):
     return cart.clear_cart(user_id)
+
+# --- Cart Routes ---
+
+@app.post("/order/{user_id}")
+def place_order_route(user_id: int):
+    return order.place_order(user_id)
+
+@app.get("/orders/{user_id}")
+def get_orders_route(user_id: int):
+    return order.get_orders(user_id)
+
+@app.get("/order/details/{order_id}")
+def get_order_details_route(order_id: int):
+    return order.get_order_by_id(order_id)
