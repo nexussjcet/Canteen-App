@@ -14,6 +14,10 @@ import Signup from './pages/signup.tsx';
 import Profile from './pages/Profile.tsx';
 import AdminDashboard from './pages/AdminDashboard.tsx';
 
+import FoodCard from "./components/FoodCard";
+import teaImg from "@/assets/tea.png";
+import coffeeImg from "@/assets/coffee.png";
+
 function App() {
   return (
     <AuthProvider>
@@ -23,7 +27,7 @@ function App() {
             {/* Admin route outside layout */}
             <Route path="/admin" element={<AdminDashboard />} />
 
-            {/* All others inside layout */}
+            {/* Routes inside layout */}
             <Route
               path="*"
               element={
@@ -34,13 +38,21 @@ function App() {
                     <Route path="/about" element={<About />} />
                     <Route path="/contact" element={<Contact />} />
                     <Route path="/cart" element={<Cart />} />
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/signup" element={<Signup />} />
                     <Route path="/profile" element={<Profile />} />
+                    <Route path="/foodcards" element={
+                      <div className="min-h-screen bg-[#F9FAFB] p-4 flex flex-col gap-4 items-center">
+                        <FoodCard title="Tea" price={10} image={teaImg} />
+                        <FoodCard title="Coffee" price={15} image={coffeeImg} />
+                      </div>
+                    } />
                   </Routes>
                 </Layout>
               }
             />
+
+            {/* Auth pages outside layout */}
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
           </Routes>
         </Router>
       </CartProvider>
